@@ -1,0 +1,28 @@
+<script>
+var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+binarySearch(primes, 79)
+
+function binarySearch(array, target){
+
+  var middle = Math.round(array.length/2)-1
+  console.log(target+" : "+array[middle])
+
+  if(target==array[middle]){
+    console.log('found')
+    return true;
+  }
+    if(target<array[middle]){
+        binarySearch(array.splice(0,middle), target);
+    }
+    else if(target>array[middle]){
+      rightHalf= array.splice(middle+1)
+      binarySearch(rightHalf, target);
+    }
+}
+</script>
+
+<p>Linear search sorts checks through an array from left to right, so when you look for a number, e.g. 67, from a list of primes
+  it will have to run a check on every index from 0-18 wher it will find 67.</p>
+
+<p>Therefore, a binary search is more efficient, where you start by checking if the item at the middle index matches the search. If not is it bigger or smaller? Then divide the remaining half by 2 again.</p>
